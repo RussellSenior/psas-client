@@ -28,16 +28,19 @@ Generally, follow the instructions [here](https://openwrt.org/docs/guide-develop
 
 The original version of this system was built using r19336 (git hash 483fe539c4), and a feeds.conf equivalent to:
 
-> src-git packages https://git.openwrt.org/feed/packages.git^22d202e3a
-> src-git luci https://git.openwrt.org/project/luci.git^5ef73b625
-> src-git routing https://git.openwrt.org/feed/routing.git^5702d2e
-> src-git telephony https://git.openwrt.org/feed/telephony.git^24acd46
+```
+src-git packages https://git.openwrt.org/feed/packages.git^22d202e3a
+src-git luci https://git.openwrt.org/project/luci.git^5ef73b625
+src-git routing https://git.openwrt.org/feed/routing.git^5702d2e
+src-git telephony https://git.openwrt.org/feed/telephony.git^24acd46
+```
 
-After cloning openwrt.git:
+After cloning openwrt.git, with $TOPDIR representing the top of the openwrt checkout:
 
+ - change directories to the psas-client checkout
  - copy config.diff to .config in the openwrt git tree, e.g.: `cp config.diff $TOPDIR/.config`
  - copy the full files tree to the openwrt git tree, e.g.: `cp -a files $TOPDIR/files`
- - change directories to the openrt git tree, e.g.: `cd $TOPDIR`
+ - change directories to the openwrt git tree, e.g.: `cd $TOPDIR`
  - generate a full .config from the stub provided: `make defconfig`
  - if you want to modify the build, use: `make menuconfig`
  - build the firmware: `time make -j$(nproc) BUILD_LOG=1 IGNORE_ERRORS=m V=s`

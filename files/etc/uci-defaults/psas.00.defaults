@@ -1,0 +1,47 @@
+#!/bin/sh
+
+uci batch <<EOF
+
+delete network.@device[1]
+delete network.@device[0]
+delete network.globals
+
+set network.@switch_vlan[0].ports='1 2 3 4 5 0'
+delete network.@switch_vlan[1]
+
+set network.br0=device
+set network.br0.type=bridge
+set network.br0.name=br-lan
+add_list network.br0.ports=eth0
+add_list network.br0.ports=eth1
+add_list network.br0.ports=eth2
+
+set network.lan.device=br-lan
+set network.lan.ipaddr=10.79.82.1
+
+delete network.wan.device
+set network.wan6.device='@wan'
+ 
+commit network
+
+set system.@system[0].hostname=psas-client
+set system.@system[0].timezone='PST8PDT,M3.2.0,M11.1.0'
+commit system
+
+set wireless.radio1.disabled=0
+set wireless.radio1.channel=auto
+
+delete wireless.default_radio0
+delete wireless.default_radio1
+
+set wireless.wifinet0=wifi-iface
+set wireless.wifinet0.device=radio1
+set wireless.wifinet0.network=wan
+set wireless.wifinet0.ifname=wan0
+set wireless.wifinet0.mode=sta
+set wireless.wifinet0.ssid='PSU Guest'
+set wireless.wifinet0.encryption=none
+
+commit wireless
+
+EOF

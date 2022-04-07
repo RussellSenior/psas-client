@@ -28,10 +28,12 @@ usually this is once per connection or once per day. Your mileage may vary.
  - Plug in the WDR3600 to a 12V 1A power supply;
  - If no LEDs light, try the power button near the power supply connector;
  - Connect a laptop or other browser-equipped computer to an ethernet port on the WDR3600;
+ - Disconnect your computer from any wifi network to force your connection through the WDR3600;
  - Your computer should get a DHCP lease;
  - If your computer has a captive-portal detection system, you might be automatically redirected to the PSU Guest captive portal.
-   If not, go to [any non-https website](http://www.gstatic.com/generate_204) and you should be directed to the PSU Guest captive 
-   portal. Agree, on behalf of yourself and anyone else who will connect to the WDR3600, to the terms and conditions;
+   If not, go to any non-https website, [such as http://www.gstatic.com/generate_204](http://www.gstatic.com/generate_204), and 
+   you should be directed to the PSU Guest captive portal. Agree, on behalf of yourself and anyone else who will connect to the
+   WDR3600, to the terms and conditions;
  - Connect your device(s) needing internet access to an ethernet port on the WDR3600;
  - Check to see if it can reach the internet: `ping 4.2.2.2` (connectivity) and `ping google.com` (DNS)
  - Yay, your device is connected to the internet!
